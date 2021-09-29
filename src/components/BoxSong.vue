@@ -1,6 +1,9 @@
 <template>
-  <div>
-
+  <div class="song ">
+      <img class="img-fluid" :src="song.poster" :alt="song.title">
+      <h5>{{ song.title }}</h5>
+      <p>{{ song.author }}</p>
+      <p>{{ song.year }}</p>
   </div>
 </template>
 
@@ -8,12 +11,13 @@
 export default {
     name:'boxSong',
     props:{
-        songs:Array,
+        song:Object,
     }
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import '../style/general.scss';
 @import '../style/variables.scss';
+
 </style>
