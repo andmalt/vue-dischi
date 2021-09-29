@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="p-5">
     <Main/>
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
 
 *{
   font-family: $mainFont;
+}
+#app{
+  background-color: $backgroundColor;
 }
 
 </style>

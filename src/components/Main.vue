@@ -1,7 +1,7 @@
 <template>
-  <main class="container-fluid px-5 py-3">
-    <div class="row g-5">
-      <div v-for="(song , index) in songs" :key="index" class="col-lg-2 col-md-4 col-12 box-song mx-3">
+  <main class="container px-5 py-3">
+    <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 px-md-5">
+      <div v-for="(song , index) in songs" :key="index" class="col box-song p-3 mx-3">
         <BoxSong :song="song"/>
       </div>
     </div>
@@ -37,9 +37,6 @@ export default {
 @import '../style/general.scss';
 @import '../style/variables.scss';
 
-main{
-  background-color: $backgroundColor;
-}
 .box-song{
   background-color: $boxColor;
 }

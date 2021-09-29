@@ -19,5 +19,21 @@ export default {
 <style lang="scss">
 @import '../style/general.scss';
 @import '../style/variables.scss';
+.song{
+    text-align: center;
+    h5{
+    color: $titleColor;
+    padding: 1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    }
+    p{
+        color: $pColor;
+        margin: 0;
+        font-weight: 500;
+        font-size: 0.8rem;
+    }
+}
+
 
 </style>
