@@ -1,21 +1,31 @@
 <template>
   <main class="container px-5 py-3">
+
     <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 px-md-5">
       <div v-for="(song , index) in songs" :key="index" class="col box-song p-3 mx-3">
         <BoxSong :song="song"/>
       </div>
     </div>
+
+    <div class="row ">
+      <div class="col-12">
+        <Loader/>
+      </div>
+    </div>
+
   </main>
 </template>
 
 <script>
 import BoxSong from './BoxSong.vue';
+import Loader from './Loader.vue';
 import axios from 'axios';
 
 export default {
   name: 'Main',
   components:{
     BoxSong,
+    Loader,
   },
   data:function(){
     return{
@@ -26,7 +36,6 @@ export default {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
       this.songs = res.data.response.slice();
-      console.log(this.songs);
     });
   },
 }
