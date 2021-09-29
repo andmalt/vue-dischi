@@ -1,14 +1,14 @@
 <template>
   <main class="container px-5 py-3">
 
-    <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 px-md-5">
+    <div v-if="booleanResponse == true" class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 px-md-5">
       <div v-for="(song , index) in songs" :key="index" class="col box-song p-3 mx-3">
         <BoxSong :song="song"/>
       </div>
     </div>
 
-    <div class="row ">
-      <div class="col-12">
+    <div v-else class="row ">
+      <div id="loader-box" class="col-12">
         <Loader/>
       </div>
     </div>
@@ -30,12 +30,17 @@ export default {
   data:function(){
     return{
       songs:[],
+      booleanResponse: false,
     }
   },
   created:function(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
       this.songs = res.data.response.slice();
+      setTimeout(() => {
+        this.booleanResponse = true;
+      },2500);
+      
     });
   },
 }
@@ -48,5 +53,8 @@ export default {
 
 .box-song{
   background-color: $boxColor;
+}
+#loader-box{
+  min-height: 100vh;
 }
 </style>

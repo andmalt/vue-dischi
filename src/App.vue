@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="p-5">
+  <div id="app" class="p-md-5">
     <Main/>
   </div>
 </template>
