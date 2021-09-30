@@ -3,7 +3,7 @@
     <div v-if="booleanResponse == true" class="row px-md-5">
       <!-- selector -->
       <div class="col-12 text-center">
-        <SelectBox @choise="choises" :song="generes"/>
+        <SelectBox @choise="myChoises" :song="generes"/>
       </div>
       <!-- songs container -->
       <div class="col-12">
@@ -41,7 +41,7 @@ export default {
     return{
       songs:[],
       booleanResponse: false,
-      choises:'',
+      myChoises:'',
     }
   },
   methods:{
@@ -53,13 +53,14 @@ export default {
       const newArray = this.songs.map((element) =>{
       return element.genre;
       });
+      // making sure that there aren't duplicates
       const arrayGeneres = newArray.filter((element,index)=>{
         if(newArray.indexOf(element) == index ){
-          console.log(element);
+          // console.log(element);
           return element;
         }
       })
-      console.log('newArr'+ arrayGeneres);
+      // console.log('arrGen'+ arrayGeneres);
       return arrayGeneres;
     },
 
@@ -68,7 +69,7 @@ export default {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
       this.songs = res.data.response.slice();
-      console.log(this.songs);
+      // console.log(this.songs);
       setTimeout(() => {
         this.booleanResponse = true;
       },2500);
