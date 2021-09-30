@@ -53,14 +53,14 @@ export default {
       const newArray = this.songs.map((element) =>{
       return element.genre;
       });
-      newArray.filter((element,index)=>{
+      const arrayGeneres = newArray.filter((element,index)=>{
         if(newArray.indexOf(element) == index ){
           console.log(element);
           return element;
         }
       })
-      console.log('newArr'+ newArray);
-      return newArray;
+      console.log('newArr'+ arrayGeneres);
+      return arrayGeneres;
     },
 
   },
