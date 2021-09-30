@@ -1,9 +1,17 @@
 <template>
   <main class="container px-5 py-3">
-
-    <div v-if="booleanResponse == true" class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 px-md-5">
-      <div v-for="(song , index) in songs" :key="index" class="col box-song p-3 mx-3">
-        <BoxSong :song="song"/>
+    <div v-if="booleanResponse == true" class="row px-md-5">
+      <!-- selector -->
+      <div class="col-12 text-center">
+        <SelectBox @choise="choises" :song="generes.genre"/>
+      </div>
+      <!-- songs container -->
+      <div class="col-12">
+        <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 ">
+          <div v-for="(song , index) in songs" :key="index" class="col box-song p-3 mx-3">
+            <BoxSong :song="song"/>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -20,23 +28,42 @@
 import BoxSong from './BoxSong.vue';
 import Loader from './Loader.vue';
 import axios from 'axios';
+import SelectBox from './SelectBox.vue';
 
 export default {
   name: 'Main',
   components:{
     BoxSong,
     Loader,
+    SelectBox,
   },
   data:function(){
     return{
       songs:[],
       booleanResponse: false,
+      choises:'',
     }
+  },
+  methods:{
+
+  },
+  computed:{
+    // filtered array for genre
+    generes(){
+      return this.songs.filter((element) =>{
+        if(element.genre){
+          return true;
+        }else{
+          return false;
+        }
+      });
+    },
   },
   created:function(){
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
     .then(res => {
       this.songs = res.data.response.slice();
+      console.log(this.songs);
       setTimeout(() => {
         this.booleanResponse = true;
       },2500);
