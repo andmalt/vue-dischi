@@ -12,7 +12,10 @@ export default {
     name:'boxSong',
     props:{
         song:Object,
-    }
+    },
+    methods:{
+
+    },
 }
 </script>
 

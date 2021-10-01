@@ -8,7 +8,7 @@
       <!-- songs container -->
       <div class="col-12">
         <div class="row row-cols-lg-6 row-cols-sm-3 row-cols-1 justify-content-center g-4 ">
-          <div v-for="(song , index) in songs" :key="index" class="col box-song p-3 mx-3">
+          <div v-for="(song , index) in change" :key="index" class="col box-song p-3 mx-3">
             <BoxSong :song="song"/>
           </div>
         </div>
@@ -41,14 +41,17 @@ export default {
     return{
       songs:[],
       booleanResponse: false,
-      myChoises:'',
+      myChoise:'',
     }
   },
   methods:{
-
+    myChoises(genre){
+      this.myChoise = genre; 
+      console.log('MC: '+this.myChoise);   
+    },
   },
   computed:{
-    // filtered array for genre
+    // filtered array for genre to view in selector
     generes:function(){
       const newArray = this.songs.map((element) =>{
       return element.genre;
@@ -62,6 +65,13 @@ export default {
       })
       // console.log('arrGen'+ arrayGeneres);
       return arrayGeneres;
+    },
+    // filtred array to view in boxsong component
+    change(){
+      if(this.myChoise === ""){
+        return this.songs;
+      }
+      return this.songs.filter((element)=> element.genre === this.myChoise);
     },
 
   },

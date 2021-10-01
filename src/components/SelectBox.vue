@@ -1,8 +1,9 @@
 <template>
     <form class="d-flex justify-content-center pb-3"  v-on:submit.prevent>
         <label for="genre">Seleziona un genere</label>
-        <select v-model="options" name="genre" class="ms-3" id="selector">
-            <option v-for="element in song" :key="element" :value="element" @click="$emit('choise',options)">{{ element }}</option>
+        <select v-model="options" name="genre" class="ms-3" id="selector" @change="$emit('choise',options)">
+            <option value="">Seleziona un genere</option>
+            <option v-for="element in song" :key="element" :value="element">{{ element }}</option>
         </select>  
     </form>
 </template>
@@ -16,9 +17,7 @@ export default {
         }
     },
     methods:{
-        prova(){
-            console.log(this.options);
-        },
+
     },
     props:['song'],
 }
