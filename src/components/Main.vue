@@ -45,9 +45,10 @@ export default {
     }
   },
   methods:{
+    // inserts the value taken from the selector into the variables myChoise
     myChoises(genre){
       this.myChoise = genre; 
-      console.log('MC: '+this.myChoise);   
+      // console.log('MC: '+this.myChoise);   
     },
   },
   computed:{
